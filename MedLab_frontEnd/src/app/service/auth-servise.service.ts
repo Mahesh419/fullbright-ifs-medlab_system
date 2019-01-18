@@ -10,6 +10,7 @@ import { User } from '../classes/user';
 export class AuthService {
 
   private url:string = '/assets/post/post.json';
+  private user;
   constructor(private http :HttpClient) { }
 
   public loginUser(userInfo:User):Observable<ValidateUser>{
@@ -23,6 +24,10 @@ export class AuthService {
   }
 
   public isAuthenticated(input:boolean):boolean{
-    return input;
+    this.user = localStorage.getItem('user');
+    if(!this.user){
+      return false;
+    }
+    return true;
   }
 }

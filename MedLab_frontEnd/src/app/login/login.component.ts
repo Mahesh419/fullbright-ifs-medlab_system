@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
+    this.status = {status:true,type:"admin"};
     this.auth.loginUser(this.login.value).subscribe(data=> this.status = data);
+    localStorage.setItem('user',JSON.stringify(this.status));
     console.log(this.status.status);
   }
 

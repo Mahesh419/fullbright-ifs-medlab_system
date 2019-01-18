@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms'; 
+
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   private passwordField:string = "password";
   private iconPassword:string = "visibility";
-
-  constructor() { }
+  private login = this.fb.group({
+    userName : ['',Validators.required],
+    password:['',Validators.required],
+  })
+  constructor(private fb:FormBuilder) { }
 
   ngOnInit() {
+  }
+  onSubmit(){
+    
   }
 
   passwordFieldToggle(){

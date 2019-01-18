@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'; 
-
+import { AuthService } from '../service/auth-servise.service';
+import { User } from '../classes/user';
+import { ValidateUser } from '../classes/validate-user';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,19 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   private passwordField:string = "password";
   private iconPassword:string = "visibility";
+  private status:ValidateUser;
+  private user :User;
   private login = this.fb.group({
-    userName : ['',Validators.required],
+    username : ['',Validators.required],
     password:['',Validators.required],
   })
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private auth:AuthService) { }
 
   ngOnInit() {
   }
   onSubmit(){
-    
+    this.auth.loginUser(this.login.value).subscribe(data=> this.status = data);
+    console.log(this.status.status);
   }
 
   passwordFieldToggle(){

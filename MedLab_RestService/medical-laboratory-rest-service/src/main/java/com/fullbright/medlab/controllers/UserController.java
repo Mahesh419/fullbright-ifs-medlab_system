@@ -9,25 +9,43 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.fullbright.medlab.entities.User;
 import com.fullbright.medlab.models.UserModel;
 import com.fullbright.medlab.repositories.UserRepository;
-import com.fullbright.medlab.services.UserService;
 
+@Component
 @Path("/user")
 public class UserController {
 	
 	@Autowired
-	UserService userService;
+	private UserRepository userRepository;
 	
 	@POST
-	@Path("/verify")
+	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public UserModel verifyLogin(UserModel user) {
-		user.setUserType("admin");
-		return user;
+	public User verifyLogin(User user) {		
+		return userRepository.findUser(user.getUsername(), user.getPassword());
 	}
+	
+	@GET
+	@Path("/")
+	public Response getUser() {
+		System.out.println("Found");
+		return Response.ok().build();
+	}
+	
+	@POST
+	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response addUser(User user) {
+		userRepository.save(user);
+		return Response.status(Response.Status.OK).build();
+	}
+	
 	
 }

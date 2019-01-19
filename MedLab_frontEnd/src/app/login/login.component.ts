@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
                                                       error=> this.error = error );
     localStorage.setItem('user',JSON.stringify(this.status));
     this.router.navigate(['']);
-    console.log(this.error);
+    console.log(this.status);
   }
 
   passwordFieldToggle(){
     this.iconPassword = (this.iconPassword==="visibility")?"visibility_off":"visibility";
     this.passwordField = (this.passwordField ==="password")?"text":"password";
+    
   }
 
 }

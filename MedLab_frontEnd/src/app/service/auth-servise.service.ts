@@ -11,8 +11,8 @@ import 'rxjs/add/observable/throw';
 })
 export class AuthService {
 
-  private url:string = 'localhost:8080/medlab/user/verify';
-  private user;
+  private url:string = '/api/medlab/user/verify';
+  private user:ValidateUser;
   constructor(private http :HttpClient) { }
 
   public loginUser(userInfo:User):Observable<ValidateUser>{
@@ -25,22 +25,21 @@ export class AuthService {
       })
     };
     return this.http.post<ValidateUser>(this.url,userInfo,httpOptions)
-    .catch(this.errorHandler);
+              .catch(this.errorHandler);
 
 }
 
 private errorHandler(error:HttpErrorResponse){
-return Observable.throw(error);
+    return Observable.throw(error.message);
 }
 
-  public isAuthenticated(input:boolean):boolean{
-    this.user = localStorage.getItem('user');
-    let userObj:ValidateUser;
+  public isAuthenticated():boolean{
+    this.user = JSON.parse(localStorage.getItem('user'));
     if(!this.user){
       return false;
     }else {
-      userObj = this.user;
-      if(!userObj.type){
+      console.log(this.user);
+      if(this.user.userId!=0){
         return false;
       }
       return true;

@@ -1,4 +1,6 @@
 export interface ValidateUser {
-    status:boolean; 
-    type:string; 
+    userId:number
+    username: string,
+    password: string,
+    userType: string
 }

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   private passwordField:string = "password";
   private iconPassword:string = "visibility";
   private status:ValidateUser;
-  private user :User;
+  private user : User;
   private error;
   private login = this.fb.group({
     username : ['',Validators.required],

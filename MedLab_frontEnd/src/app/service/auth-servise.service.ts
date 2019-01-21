@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 })
 export class AuthService {
 
-  private url:string = '/api/medlab/user/verify';
+  private url:string = '/path/api/user/login';
   private user:ValidateUser;
   constructor(private http :HttpClient) { }
 
@@ -34,12 +34,14 @@ private errorHandler(error:HttpErrorResponse){
 }
 
   public isAuthenticated():boolean{
-    this.user = JSON.parse(localStorage.getItem('user'));
-    if(!this.user){
+    let id = localStorage.getItem('user')
+    console.log(id);
+    if(id == null){
+      console.log("not work");
       return false;
     }else {
-      console.log(this.user);
-      if(this.user.userId!=0){
+      this.user = JSON.parse(localStorage.getItem('user'));
+      if(!this.user.status){
         return false;
       }
       return true;

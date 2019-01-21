@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
                                                       error=> this.error = error );
     localStorage.setItem('user',JSON.stringify(this.status));
     this.router.navigate(['']);
-    console.log(this.status);
   }
 
   passwordFieldToggle(){

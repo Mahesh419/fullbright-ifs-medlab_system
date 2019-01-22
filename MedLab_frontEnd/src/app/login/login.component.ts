@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms'; 
+import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../service/auth-servise.service';
 import { User } from '../classes/user';
 import { ValidateUser } from '../classes/validate-user';
@@ -28,13 +28,15 @@ export class LoginComponent implements OnInit {
     this.auth.loginUser(this.login.value).subscribe(data => this.status = data,
                                                       error=> this.error = error );
     localStorage.setItem('user',JSON.stringify(this.status));
+
     this.router.navigate(['']);
+
   }
 
   passwordFieldToggle(){
     this.iconPassword = (this.iconPassword==="visibility")?"visibility_off":"visibility";
     this.passwordField = (this.passwordField ==="password")?"text":"password";
-    
+
   }
 
 }

@@ -33,30 +33,25 @@ public class UserController {
 		
 		boolean status = false;
 		String userType = "";
+		String userName = "";
 		
 		if(verifiedUser != null) {
 			status = true;
 			userType = verifiedUser.getUserType();
+			userName = verifiedUser.getUsername();		
 		}
 
-		String response = "{\"status\": \"" + status + "\", \"user_type\": \"" + userType + "\"}";
+		String response = "{\"status\": \"" + status + "\", \"username\": \"" + userName + "\", \"user_type\": \"" + userType + "\"}";
 		return Response.status(Response.Status.OK).entity(response).build();
 	}
 	
-	@GET
-	@Path("/")
-	public Response getUser() {
-		System.out.println("Found");
-		return Response.ok().build();
-	}
-	
-	@POST
-	@Path("/")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addUser(User user) {
-		userRepository.save(user);
-		return Response.status(Response.Status.OK).build();
-	}
+//	@POST
+//	@Path("/")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response addUser(User user) {
+//		userRepository.save(user);
+//		return Response.status(Response.Status.OK).build();
+//	}
 	
 	
 }

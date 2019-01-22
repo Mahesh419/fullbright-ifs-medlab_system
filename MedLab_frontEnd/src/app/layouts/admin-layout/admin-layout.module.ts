@@ -11,6 +11,8 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import { DashboardUIComponent } from '../../dashboard-ui/dashboard-ui.component';
+// import { MatCardModule} from '@angular/material/card';
 
 import {
   MatButtonModule,
@@ -18,8 +20,12 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatIconModule,
+  MatCardModule,
+  MatStepperModule
 } from '@angular/material';
+// import{MatHorizontalStepper} from '@angular/animation';
 
 @NgModule({
   imports: [
@@ -32,6 +38,10 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatIconModule,
+    MatStepperModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   declarations: [
     DashboardComponent,
@@ -41,7 +51,8 @@ import {
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,  ]
+    UpgradeComponent,
+    DashboardUIComponent  ]
 })
 
 export class AdminLayoutModule {}

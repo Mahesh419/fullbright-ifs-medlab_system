@@ -11,6 +11,8 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatRadioModule} from '@angular/material/radio';
 
 import {
   MatButtonModule,
@@ -18,7 +20,9 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
+  MatIconModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 @NgModule({
@@ -32,6 +36,10 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MatDatepickerModule,
+    MatIconModule,
+    MatNativeDateModule,
+    MatRadioModule,
   ],
   declarations: [
     DashboardComponent,

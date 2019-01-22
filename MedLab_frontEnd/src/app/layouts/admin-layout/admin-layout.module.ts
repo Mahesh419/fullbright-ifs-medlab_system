@@ -23,7 +23,12 @@ import {
   MatSelectModule,
   MatIconModule,
   MatCardModule,
-  MatStepperModule
+  MatStepperModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatExpansionModule,
+  MatCheckboxModule
 } from '@angular/material';
 // import{MatHorizontalStepper} from '@angular/animation';
 
@@ -41,7 +46,12 @@ import {
     MatIconModule,
     MatStepperModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   declarations: [
     DashboardComponent,
@@ -52,7 +62,8 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    DashboardUIComponent  ]
+    DashboardUIComponent,
+   ]
 })
 
 export class AdminLayoutModule {}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TestType } from '../classes/TestType';
+import { TestData } from '../classes/test-details';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,7 +9,9 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+  testSet :TestType[] = TestData;
   isLinear = false;
+  
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   constructor(private _formBuilder: FormBuilder) { }
@@ -19,6 +23,8 @@ export class UserProfileComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    console.log(this.testSet[0].tests[0].name);
   }
+  
 
 }

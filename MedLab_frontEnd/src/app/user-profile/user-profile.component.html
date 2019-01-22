@@ -1,62 +1,135 @@
-<div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-8">
-              <div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title">Add Customer</h4>
-                  </div>
-                  <div class="card-body">
-                      <form>
-                          <div class="row">
+<div class = "stepper-form">
+        <div fxLayout="row" fxLayoutWrap="wrap" >
+                <!-- Card column -->
+                <div fxFlex.gt-sm="100%" fxFlex="100">
+                    <mat-card>
+                        <mat-card-content>
+                            <mat-card-title>Stepper</mat-card-title>
+                            <mat-card-subtitle>Check the <code class=""><a href="https://material.angular.io/components/stepper/overview">Official Component</a></code></mat-card-subtitle>
                             
-                              <div class="col-md-4" style = "margin-left: 660px;">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Telephone Number" type="text">
-                                  </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Name" type="text">
-                                </mat-form-field>
-                              </div>
-                            </div>
-                           
-                          <div class="row">
-                              <div class="col-md-12">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Email" type="email">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-4">
-                                    <mat-form-field class="example-full-width">
-                                            <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
-                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                            <mat-datepicker touchUi #picker></mat-datepicker>
-                                          </mat-form-field>
-                              </div>
-                              <div class="col-md-4">   
-                                  <label style = "margin-top: 20px; margin-left: 30px"> Gender:                             
-                                <mat-radio-group style = "margin-left: 30px">
-                                        <mat-radio-button value="male">Male</mat-radio-button>
-                                        <mat-radio-button value="female" style = "margin-left: 50px">Female</mat-radio-button>
-                                </mat-radio-group>
-                            </label>
-                              </div>
-                             
-                          </div>
-                        
-                          <button mat-raised-button type="button" class="btn btn-danger pull-right">Next</button>
-                          <button mat-raised-button type="button" class="btn btn-danger pull-right">Back</button>
-                          <div class="clearfix"></div>
-                      </form>
-                  </div>
-              </div>
-          </div>         
-      </div>
+                            <mat-horizontal-stepper >
+                                <!-- +===========================================================
+                                    This is a first stepper .that is user to display Test items
+                                     +=========================================================== -->
+                             <mat-step [stepControl]="firstFormGroup">
+                                <div class="card">
+                                    <div class="card-header ">
+                                        <h4 class="card-title">Edit Profile</h4>
+                                        <p class="card-category">Complete your profile</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <ng-template matStepLabel>Add Report</ng-template>
+                                        <mat-accordion>
+                                                <mat-expansion-panel>
+                                                  <mat-expansion-panel-header>
+                                                    <mat-panel-title  >
+                                                      <mat-checkbox (change)="showOptions($event);makeJSON($event.checked,i,j,k)" (click) = "$event.stopPropagation();" class="check_box_Style"><span class ="txtdecoCheckbox">Check here</span></mat-checkbox>
+                                                    </mat-panel-title>
+                                                    <mat-panel-description>
+                                                      Type your name and age
+                                                    </mat-panel-description>
+                                                  </mat-expansion-panel-header>
+                                              
+                                                  <!-- Inside the panel expand-->
+                                                  <ul>
+                                                        <li *ngFor = "let test of this.testSet[0].tests">{{test.name}}</li>
+                                                  </ul>
+                                                </mat-expansion-panel>
+                                    </mat-accordion>
+                                    </div>
+                                </div>
+                               
+                                
+                              </mat-step>
+                              <!-- +==============================================================================
+                                    This is SECOND STEPPER .that is user to display Costommer details insert form
+                                   +============================================================================== -->
+                              <mat-step >
+                                  <div class="main-content">
+                                        <!-- <div class="container-fluid"> -->
+                                            <!-- <div class="row">
+                                                <div class="col-md-12"> -->
+                                                    <div class="card" style="margin-top: -70px;">
+                                                        <div class="card-header card-header-danger">
+                                                            <h4 class="card-title">Add Customer</h4>
+                                                        </div>
+                                                        <div class="card-body">
+                                                                <ng-template matStepLabel>Add Costommer</ng-template>
+                                                            <form>
+                                                                <div class="row">
+                                                                    <div class="col-md-8"></div>
+                                                                    <div class="col-md-4 " style = "margin-left:0px;">
+                                                                        <mat-form-field class="example-full-width">
+                                                                          <input matInput placeholder="Telephone Number" type="text">
+                                                                        </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                      <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="Name" type="text">
+                                                                      </mat-form-field>
+                                                                    </div>
+                                                                  </div>
+                                      
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                      <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="Email" type="email">
+                                                                      </mat-form-field>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                          <mat-form-field class="example-full-width">
+                                                                                  <input matInput [matDatepicker]="picker" placeholder="Date of Birth">
+                                                                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                                                  <mat-datepicker touchUi #picker></mat-datepicker>
+                                                                                </mat-form-field>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <label style = "margin-top: 20px; margin-left: 30px"> Gender:
+                                                                            <mat-radio-group style = "margin-left: 30px">
+                                                                                    <mat-radio-button value="male">Male</mat-radio-button>
+                                                                                    <mat-radio-button value="female" style = "margin-left: 50px">Female</mat-radio-button>
+                                                                            </mat-radio-group>
+                                                                        </label>
+                                                                    </div>
+                                      
+                                                                </div>
+                                      
+                                                                <button mat-raised-button type="button" class="btn btn-danger pull-right">Next</button>
+                                                                <button mat-raised-button type="button" class="btn btn-danger pull-right">Back</button>
+                                                                <div class="clearfix"></div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                <!-- </div>
+                                            </div> -->
+                                        <!-- </div> -->
+                                      </div>
+                                
+                                    
+                              </mat-step>
+                              <mat-step>
+                                    <ng-template matStepLabel>Done</ng-template>
+                                       You are now done.
+                                    <div>
+                                      <button mat-raised-button color="accent" matStepperNext>Next</button>
+                                      <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                    </div>
+                                  </mat-step>
+                              <mat-step>
+                                <ng-template matStepLabel>Done</ng-template>
+                                You are now done.
+                                <div>
+                                  <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+                                </div>
+                              </mat-step>
+                            </mat-horizontal-stepper>
+                        </mat-card-content>
+                         
+                    </mat-card>    
+                </div>
   </div>
 </div>

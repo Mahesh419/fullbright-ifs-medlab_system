@@ -11,8 +11,10 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatRadioModule} from '@angular/material/radio';
+
+import { DashboardUIComponent } from '../../dashboard-ui/dashboard-ui.component';
+// import { MatCardModule} from '@angular/material/card';
+
 
 import {
   MatButtonModule,
@@ -22,8 +24,16 @@ import {
   MatTooltipModule,
   MatSelectModule,
   MatIconModule,
-  MatNativeDateModule
+  MatCardModule,
+  MatStepperModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatRadioModule,
+  MatExpansionModule,
+  MatCheckboxModule
+
 } from '@angular/material';
+// import{MatHorizontalStepper} from '@angular/animation';
 
 @NgModule({
   imports: [
@@ -36,10 +46,15 @@ import {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatDatepickerModule,
     MatIconModule,
+    MatStepperModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   declarations: [
     DashboardComponent,
@@ -49,7 +64,9 @@ import {
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,  ]
+    UpgradeComponent,
+    DashboardUIComponent,
+   ]
 })
 
 export class AdminLayoutModule {}

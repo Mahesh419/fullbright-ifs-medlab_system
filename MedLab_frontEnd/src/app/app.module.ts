@@ -26,6 +26,7 @@ import { AuthGardService } from './service/auth.gard.service';
 import { AuthService } from './service/auth-servise.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './service/customer.service';
+import { TestService } from './service/test.service';
 
 @NgModule({
   imports: [
@@ -48,7 +49,7 @@ import { CustomerService } from './service/customer.service';
     LoginComponent,
 
   ],
-  providers: [AuthGardService,AuthService,CustomerService],
+  providers: [AuthGardService,AuthService,CustomerService,TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

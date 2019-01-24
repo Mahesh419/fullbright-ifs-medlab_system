@@ -85,7 +85,7 @@
                                                                     <div class="col-md-3 " style = "margin-left:0px;">
                                                         
                                                                         <mat-form-field class="example-full-width" >
-                                                                          <input matInput placeholder="Telephone Number" type="text" formControlName='tpNo'>
+                                                                          <input matInput placeholder="Telephone Number" type="text" (keyup.enter)='onTpSubmit()' formControlName='tpNo'>
                                                                           
                                                                         </mat-form-field>
                                                                     </div>
@@ -141,6 +141,10 @@
                                 
                                     
                               </mat-step>
+                              <!-- +==============================================================================
+                                    This is THIRD STEPPER .This is user to Display billing details....
+                                   +============================================================================== -->
+                              
                               <mat-step>
                                     <ng-template matStepLabel>Done</ng-template>
                                        You are now done.
@@ -148,28 +152,40 @@
                                         <table class="table">
                                             <thead class=" text-primary">
                                                 <th>
-                                                    ID
+                                                    Profile ID
                                                 </th>
                                                 <th>
-                                                    Item Name
+                                                    Prfile Name/Test
                                                 </th>
                                                 
                                                 <th>
-                                                    Salary
+                                                    Costs
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        1
+                                                <tr  *ngFor='let testProf of testProfiles' >
+                                                    
+                                                    <td *ngIf='isCustomTest(testProf.profileName)'>
+                                                            {{ testProf.profileId}}
                                                     </td>
-                                                    <td>
-                                                        Dakota Rice
+                                                    <td *ngIf='isCustomTest(testProf.profileName)'>
+                                                            {{testProf.profileName}}
+                                                    </td>
+                                                        
+                                                    <td class="text-primary" *ngIf='isCustomTest(testProf.profileName)'>
+                                                        {{testProfilePrice(testProf.profileId)|number:'.2-2'}}
                                                     </td>
                                                     
-                                                    <td class="text-primary">
-                                                        $36,738
+                                                    <td *ngIf='!isCustomTest(testProf.profileName)'>
+                                                            {{ testProf.profileId}}
                                                     </td>
+                                                    <td *ngIf='!isCustomTest(testProf.profileName)'>
+                                                            {{testProf.profileName}}
+                                                    </td>
+                                                        
+                                                    <td class="text-primary" *ngIf='!isCustomTest(testProf.profileName)'>
+                                                        {{customTestPrice()|number:'.2-2'}}
+                                                    </td>  
                                                 </tr>
                                                 <tr>
                                                     <td>
@@ -180,7 +196,7 @@
                                                     </td>
                                                     
                                                     <td class="text-primary">
-                                                        $36,738
+                                                        Rs.{{SubTotal|number:'.2-2'}}
                                                     </td>
                                                 </tr>
               
@@ -213,7 +229,7 @@
                                         </table>
                                     </div>
                                     <div>
-                                        <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperNext>Next</button>
+                                        <button mat-raised-button type="button" class="btn btn-danger pull-right"  matStepperNext>Next</button>
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                     </div>
                                   </mat-step>
@@ -221,7 +237,7 @@
                                 <ng-template matStepLabel>Done</ng-template>
                                 You are now done.
                                 <div>
-                                    <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperNext>Next</button>
+                                    <button mat-raised-button type="button" (click) = 'onSubmit()' class="btn btn-danger pull-right" matStepperNext>Next</button>
                                     <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                 </div>
                               </mat-step>

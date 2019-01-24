@@ -5,6 +5,8 @@ import { TestData } from '../classes/test-details';
 import { TestProfile } from '../classes/selectedTestProfile';
 import { Test } from '../classes/Test';
 import { SelectedTests } from '../classes/selectedTests';
+import { CustomerService } from '../service/customer.service';
+import { Customer } from '../classes/customer';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,21 +18,40 @@ export class UserProfileComponent implements OnInit {
   isLinear = false;
   private testProfiles:TestProfile[] = new Array();
   private customProfileName = "Custom";//name of the custom profile
-  
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  private customerDetailForm:FormGroup;
+  private existingCustomerData:Customer = new Customer();
+
+  constructor(private _formBuilder: FormBuilder, private customer:CustomerService) { }
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+    this.customerDetailForm = this._formBuilder.group({
+      customerId:[this.existingCustomerData.customerId],
+      tpNo: ['', Validators.required],
+      name: ['',Validators.required],
+      email:['',[Validators.required,Validators.email]],
+      dateOfBirth:['',Validators.required],
+      gender:['',Validators.required]
+
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
-    console.log(this.testSet[0].testSet[1].name);
+    
+    
   }
- 
+  onTpSubmit(){
+    // console.log(this.customerDetailForm.value.dateOfBirth);
+    this.customer.getCustomerByTelephone(this.customerDetailForm.value.tpNo).subscribe(
+      (data:Customer )=> {
+                          this.existingCustomerData = new Customer();
+                          this.existingCustomerData = data;
+                          this.existingCustomerData.gender = this.existingCustomerData.gender.toLocaleLowerCase();
+                          console.error(this.existingCustomerData);},
+      (error)=>{console.error("ERROR FOUNE :  "+error); 
+                  this.existingCustomerData = new Customer();
+                }
+    )
+  }
+  onSubmit(){
+    console.log(this.customerDetailForm.value);
+  }
   
   makeJSON(event,index,testProfile:TestType,test:Test = null){
     console.log(this.arrayElementFinder(testProfile.testProfileName));
@@ -47,6 +68,8 @@ export class UserProfileComponent implements OnInit {
         testSelected.testName = test.name;
         testProf.tests = new Array();
         testProf.tests.push(testSelected);
+        
+        console.log(this.testProfiles);
       }
       this.testProfiles.splice(index,0,testProf);
       }else{//element already in the array
@@ -60,6 +83,7 @@ export class UserProfileComponent implements OnInit {
           }
         }
       }
+      
     }else{//when unchecked the element
       if(testProfile.testProfileName != this.customProfileName){
         this.testProfiles.splice(testProfileId ,1);
@@ -93,5 +117,11 @@ export class UserProfileComponent implements OnInit {
     })
     return selectedIndex;
   }
-  
+
+  // private testProfilePrice(testProfId:number){
+  //   let total:number;
+  //   this.testSet.forEach((value,index)=>{
+      
+  //   })
+  // }
 }

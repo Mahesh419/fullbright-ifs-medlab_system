@@ -25,6 +25,7 @@ import { MaterialModuleModule } from './material-module.module';
 import { AuthGardService } from './service/auth.gard.service';
 import { AuthService } from './service/auth-servise.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomerService } from './service/customer.service';
 
 @NgModule({
   imports: [
@@ -47,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
 
   ],
-  providers: [AuthGardService,AuthService],
+  providers: [AuthGardService,AuthService,CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

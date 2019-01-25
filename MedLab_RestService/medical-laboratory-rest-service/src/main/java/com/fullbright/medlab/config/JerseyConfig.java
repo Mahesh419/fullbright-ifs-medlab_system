@@ -5,6 +5,7 @@ import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.stereotype.Component;
 
+import com.fullbright.medlab.controllers.CollectionCenterController;
 import com.fullbright.medlab.controllers.CustomerController;
 import com.fullbright.medlab.controllers.TestController;
 import com.fullbright.medlab.controllers.TestProfileController;
@@ -19,5 +20,6 @@ public class JerseyConfig extends ResourceConfig {
 		register(UserController.class);
 		register(TestProfileController.class);
 		register(TestController.class);
+		register(CollectionCenterController.class);
 	}
 }

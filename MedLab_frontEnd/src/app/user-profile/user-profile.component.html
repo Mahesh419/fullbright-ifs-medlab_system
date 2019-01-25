@@ -5,8 +5,7 @@
                     <mat-card>
                             
                         <mat-card-content>
-                            <mat-card-title>Stepper</mat-card-title>
-                            <mat-card-subtitle>Check the <code class=""><a href="https://material.angular.io/components/stepper/overview">Official Component</a></code></mat-card-subtitle>
+                            <mat-card-title>Add Customer Report</mat-card-title>
                             
                             <mat-horizontal-stepper >
                                 <!-- +===========================================================
@@ -155,7 +154,7 @@
                               
                               <mat-step>
                                     <ng-template matStepLabel>Billing Information</ng-template>
-                                       <h4 style="font-weight: bold">Reciept ID:</h4>
+                                       <h4 style="font-weight: bold">Reciept ID: {{receipt.receiptId}}</h4>
                                        <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
@@ -248,7 +247,7 @@
                                     </div>
                                 </form>
                                 <div>
-                                    <button mat-raised-button type="button" (click) = 'onSubmit()' class="btn btn-danger pull-right" matStepperNext>Save</button>
+                                    <button mat-raised-button type="button" (click) = 'sendBigData()' class="btn btn-danger pull-right" matStepperNext>Save</button>
                                     <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                 </div>
                               </mat-step>

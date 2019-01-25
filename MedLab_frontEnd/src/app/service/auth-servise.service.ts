@@ -36,7 +36,7 @@ private errorHandler(error:HttpErrorResponse){
   public isAuthenticated():boolean{
     let id = localStorage.getItem('user')
     console.log(id);
-    if(id == null){
+    if(!id){
       console.log("not work");
       return false;
     }else {

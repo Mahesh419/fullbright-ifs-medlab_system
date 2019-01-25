@@ -22,6 +22,7 @@ export class UserProfileComponent implements OnInit {
   private customerDetailForm:FormGroup;
   private existingCustomerData:Customer = new Customer();
   private SubTotal:number[] = Array();//total price of customr bill
+  private locations:Location[];
 
   constructor(private _formBuilder: FormBuilder, private customer:CustomerService, private test:TestService) { }
 
@@ -35,12 +36,11 @@ export class UserProfileComponent implements OnInit {
       gender:['',Validators.required]
 
     });
-    this.test.getTestProfile().subscribe((data:TestType[])=>{
-      this.testSet = data;
-    }/*,error=>{
-        console.error(error);
-    }*/);//should handle error as well
+    this.test.getTestProfile().subscribe((data:TestType[])=>{this.testSet = data;},
+                                          error=>{console.error(error);});//should handle error as well
     
+    this.test.getLocation().subscribe((data:Location[])=>{this.locations = data;})
+    console.log(this.locations);
   }
 
   //+=====================================================
@@ -69,7 +69,7 @@ export class UserProfileComponent implements OnInit {
   /*+==========================================================
       Make JSON file for test selection
     +========================================================== */
-  makeJSON(event,index,testProfile:TestType,test:Test = null){
+  private makeJSON(event,index,testProfile:TestType,test:Test = null){
     console.log(this.arrayElementFinder(testProfile.testProfileName));
     let testProfileId = this.arrayElementFinder(testProfile.testProfileName);
     if(event.checked){//if checked
@@ -114,7 +114,7 @@ export class UserProfileComponent implements OnInit {
       }
       
     }// hooray it works fine...!
-      
+    console.log( JSON.stringify(this.testProfiles));
   }
   private arrayElementFinder(profileName:string):number{//select element from testprofiles
     let selectedIndex:number = -1;

@@ -103,10 +103,17 @@
                                                                   </div>
                                       
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-8">
                                                                       <mat-form-field class="example-full-width">
                                                                         <input matInput placeholder="Email" type="email" [(ngModel)]='existingCustomerData.email' formControlName='email'>
                                                                       </mat-form-field>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-select placeholder="Favorite food">
+                                                                                <mat-option  [value]=""> Sri lanka</mat-option> 
+                                                                            </mat-select>
+                                                                        </mat-form-field>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -115,9 +122,9 @@
                                                                                   <input matInput [matDatepicker]="picker" placeholder="Date of Birth" [(ngModel)]='existingCustomerData.dob' formControlName='dateOfBirth'>
                                                                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                                                                   <mat-datepicker touchUi #picker></mat-datepicker>
-                                                                                </mat-form-field>
+                                                                          </mat-form-field>
                                                                     </div>
-                                                                    <div class="col-md-4">
+                                                                    <div class="col-md-6">
                                                                         <label style = "margin-top: 20px; margin-left: 30px"> Gender:
                                                                             <mat-radio-group style = "margin-left: 30px" [(ngModel)]='existingCustomerData.gender' formControlName='gender'>
                                                                                     <mat-radio-button value="male" >Male</mat-radio-button>
@@ -142,7 +149,7 @@
                                     
                               </mat-step>
                               <!-- +==============================================================================
-                                    This is THIRD STEPPER .This is user to Display billing details....
+                                    This is THIRD STEPPER .This is used to Display billing details....
                                    +============================================================================== -->
                               
                               <mat-step>
@@ -200,31 +207,6 @@
                                                     </td>
                                                 </tr>
               
-                                                 <tr>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td  style="text-align:right;font-weight:900;">
-                                                        Discount
-                                                    </td>
-                                                    
-                                                    <td class="text-primary">
-                                                        $36,738
-                                                    </td>
-                                                </tr>
-              
-                                                 <tr>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td  style="text-align:right;font-weight:900;">
-                                                        Total
-                                                    </td>
-                                                    
-                                                    <td class="text-primary">
-                                                        Sub Total
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -232,7 +214,11 @@
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right"  matStepperNext>Next</button>
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                     </div>
-                                  </mat-step>
+                              </mat-step>
+                              <!-- +==============================================================================
+                                    This is FOURTH STEPPER .This is used to store container details ....
+                                   +============================================================================== -->
+                              
                               <mat-step>
                                 <ng-template matStepLabel>Done</ng-template>
                                 You are now done.

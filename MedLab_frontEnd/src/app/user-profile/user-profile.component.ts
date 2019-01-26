@@ -8,6 +8,8 @@ import { SelectedTests } from '../classes/selectedTests';
 import { CustomerService } from '../service/customer.service';
 import { Customer } from '../classes/customer';
 import { TestService } from '../service/test.service';
+import { RequestData } from '../classes/RequestData';
+import { Receipt } from '../classes/receipt';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,27 +22,54 @@ export class UserProfileComponent implements OnInit {
   private testProfiles:TestProfile[] = new Array();//Store selected test profile and test data
   private customProfileName = "Custom";//name of the custom profile
   private customerDetailForm:FormGroup;
+  private specimenIds:FormGroup;
   private existingCustomerData:Customer = new Customer();
-  private SubTotal:number[] = Array();//total price of customr bill
+  private SubTotal:number = 1000.0;//total price of customr bill
+  private locations:Location[];
+  private receipt:Receipt;
+  private requestData:RequestData;
 
   constructor(private _formBuilder: FormBuilder, private customer:CustomerService, private test:TestService) { }
 
   ngOnInit() {
     this.customerDetailForm = this._formBuilder.group({
-      customerId:[this.existingCustomerData.customerId],
+      customerId:[''],
       tpNo: ['', Validators.required],
       name: ['',Validators.required],
       email:['',[Validators.required,Validators.email]],
       dateOfBirth:['',Validators.required],
-      gender:['',Validators.required]
-
-    });
-    this.test.getTestProfile().subscribe((data:TestType[])=>{
-      this.testSet = data;
-    }/*,error=>{
-        console.error(error);
-    }*/);//should handle error as well
+      location:[,Validators.required],
+      gender:['',Validators.required],
     
+    });
+
+    this.specimenIds = this._formBuilder.group({
+        urine:[''],
+        blood:['']
+    })
+
+    this.test.getTestProfile().subscribe((data:TestType[])=>{this.testSet = data;},
+                                          error=>{console.error(error);});//should handle error as well
+    
+    this.test.getLocation().subscribe((data:Location[])=>{this.locations = data;})
+    
+    this.test.getReciept().subscribe((data:Receipt) => {
+      this.receipt = data;
+    })
+  }
+
+  //+=====================================================
+  //this method send totaly collected data as post request
+  //+=====================================================
+  sendBigData(){
+      this.requestData = new RequestData();
+      this.requestData.selectedTestprof = this.testProfiles;
+      this.requestData.customerDetails = this.customerDetailForm.value;
+      this.requestData.SpecimenId = this.specimenIds.value;
+      this.requestData.recieptId = this.receipt.receiptId;
+      this.requestData.totalTest = this.SubTotal;
+      
+      console.log(JSON.stringify(this.requestData));
   }
 
   //+=====================================================
@@ -63,13 +92,13 @@ export class UserProfileComponent implements OnInit {
       this dummy method for testing some outputs
     +========================================================== */
   onSubmit(){
-    console.log(this.SubTotal);
+    console.log(this.specimenIds.value);
     
   }
   /*+==========================================================
       Make JSON file for test selection
     +========================================================== */
-  makeJSON(event,index,testProfile:TestType,test:Test = null){
+  private makeJSON(event,index,testProfile:TestType,test:Test = null){
     console.log(this.arrayElementFinder(testProfile.testProfileName));
     let testProfileId = this.arrayElementFinder(testProfile.testProfileName);
     if(event.checked){//if checked
@@ -114,7 +143,7 @@ export class UserProfileComponent implements OnInit {
       }
       
     }// hooray it works fine...!
-      
+    console.log( JSON.stringify(this.testProfiles));
   }
   private arrayElementFinder(profileName:string):number{//select element from testprofiles
     let selectedIndex:number = -1;
@@ -158,7 +187,7 @@ export class UserProfileComponent implements OnInit {
           });
       }
     })
-    this.SubTotal.push(total);
+    
     return total;
   }
   private isCustomTest(nameProf):boolean{

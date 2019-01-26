@@ -5,8 +5,7 @@
                     <mat-card>
                             
                         <mat-card-content>
-                            <mat-card-title>Stepper</mat-card-title>
-                            <mat-card-subtitle>Check the <code class=""><a href="https://material.angular.io/components/stepper/overview">Official Component</a></code></mat-card-subtitle>
+                            <mat-card-title>Add Customer Report</mat-card-title>
                             
                             <mat-horizontal-stepper >
                                 <!-- +===========================================================
@@ -80,6 +79,7 @@
                                                         <div class="card-body">
                                                                 <ng-template matStepLabel>Add Costommer</ng-template>
                                                             <form [formGroup]= "customerDetailForm">
+                                                                <input type="hidden" formControlName = "customerId" [(ngModel)]='existingCustomerData.customerId'><!--This field is used to store existing customer id-->
                                                                 <div class="row">
                                                                     <div class="col-md-8 "></div>
                                                                     <div class="col-md-3 " style = "margin-left:0px;">
@@ -103,10 +103,17 @@
                                                                   </div>
                                       
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-8">
                                                                       <mat-form-field class="example-full-width">
                                                                         <input matInput placeholder="Email" type="email" [(ngModel)]='existingCustomerData.email' formControlName='email'>
                                                                       </mat-form-field>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <mat-form-field class="example-full-width">
+                                                                            <mat-select placeholder="Location" formControlName = 'location'>
+                                                                                <mat-option *ngFor="let location of locations"  [value]="location.locationId"> {{location.location}} </mat-option> 
+                                                                            </mat-select>
+                                                                        </mat-form-field>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
@@ -115,9 +122,9 @@
                                                                                   <input matInput [matDatepicker]="picker" placeholder="Date of Birth" [(ngModel)]='existingCustomerData.dob' formControlName='dateOfBirth'>
                                                                                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                                                                   <mat-datepicker touchUi #picker></mat-datepicker>
-                                                                                </mat-form-field>
+                                                                          </mat-form-field>
                                                                     </div>
-                                                                    <div class="col-md-4">
+                                                                    <div class="col-md-6">
                                                                         <label style = "margin-top: 20px; margin-left: 30px"> Gender:
                                                                             <mat-radio-group style = "margin-left: 30px" [(ngModel)]='existingCustomerData.gender' formControlName='gender'>
                                                                                     <mat-radio-button value="male" >Male</mat-radio-button>
@@ -142,12 +149,12 @@
                                     
                               </mat-step>
                               <!-- +==============================================================================
-                                    This is THIRD STEPPER .This is user to Display billing details....
+                                    This is THIRD STEPPER .This is used to Display billing details....
                                    +============================================================================== -->
                               
                               <mat-step>
-                                    <ng-template matStepLabel>Done</ng-template>
-                                       You are now done.
+                                    <ng-template matStepLabel>Billing Information</ng-template>
+                                       <h4 style="font-weight: bold">Reciept ID: {{receipt.receiptId}}</h4>
                                        <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
@@ -200,31 +207,6 @@
                                                     </td>
                                                 </tr>
               
-                                                 <tr>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td  style="text-align:right;font-weight:900;">
-                                                        Discount
-                                                    </td>
-                                                    
-                                                    <td class="text-primary">
-                                                        $36,738
-                                                    </td>
-                                                </tr>
-              
-                                                 <tr>
-                                                    <td>
-                                                        
-                                                    </td>
-                                                    <td  style="text-align:right;font-weight:900;">
-                                                        Total
-                                                    </td>
-                                                    
-                                                    <td class="text-primary">
-                                                        Sub Total
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -232,12 +214,40 @@
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right"  matStepperNext>Next</button>
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                     </div>
-                                  </mat-step>
+                              </mat-step>
+                              <!-- +==============================================================================
+                                    This is FOURTH STEPPER .This is used to store container details ....
+                                   +============================================================================== -->
+                              
                               <mat-step>
-                                <ng-template matStepLabel>Done</ng-template>
-                                You are now done.
+                                <ng-template matStepLabel>Add Containers</ng-template>
+                                <form [formGroup] = "specimenIds">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Speciman Container Details</h4>
+                                            <!-- <p class="card-text">This is for inserting Speciman ID</p> --><!--can add description about speciman types-->
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width" appearance="outline" >
+                                                        <mat-label>Urine Sample ID</mat-label>
+                                                        <input matInput placeholder="Urine Sample ID" type="text" formControlName='urine'>
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <mat-form-field class="example-full-width" appearance="outline" >
+                                                        <mat-label>Blood Sample ID</mat-label>
+                                                        <input matInput placeholder="Blood Sample ID" type="text" formControlName='blood'>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </form>
                                 <div>
-                                    <button mat-raised-button type="button" (click) = 'onSubmit()' class="btn btn-danger pull-right" matStepperNext>Next</button>
+                                    <button mat-raised-button type="button" (click) = 'sendBigData()' class="btn btn-danger pull-right" matStepperNext>Save</button>
                                     <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperPrevious>Back</button>
                                 </div>
                               </mat-step>

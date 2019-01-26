@@ -154,7 +154,7 @@
                               
                               <mat-step>
                                     <ng-template matStepLabel>Billing Information</ng-template>
-                                       <h4 style="font-weight: bold">Reciept ID: {{receipt.receiptId}}</h4>
+                                       <h4 *ngIf='receipt' style="font-weight: bold">Reciept ID: {{receipt.receiptId}}</h4>
                                        <div class="table-responsive">
                                         <table class="table">
                                             <thead class=" text-primary">
@@ -221,7 +221,7 @@
                               
                               <mat-step>
                                 <ng-template matStepLabel>Add Containers</ng-template>
-                                <form [formGroup] = "specimenIds">
+                                <form [formGroup]='specimenIds'>
                                     <div class="card">
                                         <div class="card-header">
                                             <h4 class="card-title">Speciman Container Details</h4>
@@ -231,16 +231,16 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <mat-form-field class="example-full-width" appearance="outline" >
-                                                        <mat-label>Urine Sample ID</mat-label>
-                                                        <input matInput placeholder="Urine Sample ID" type="text" formControlName='urine'>
+                                                        <mat-label>Specimen ID</mat-label>
+                                                        <input matInput placeholder="Specimen ID" type="text" formControlName='specimenId'>
                                                     </mat-form-field>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!-- <div class="col-md-6">
                                                     <mat-form-field class="example-full-width" appearance="outline" >
                                                         <mat-label>Blood Sample ID</mat-label>
                                                         <input matInput placeholder="Blood Sample ID" type="text" formControlName='blood'>
                                                     </mat-form-field>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         

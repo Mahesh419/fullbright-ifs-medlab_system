@@ -30,9 +30,14 @@ export class TestService {
     return this.http.get<Receipt>(this.recieptGeneratorURL)
           .catch(this.handleError);
   }
+  // saveCompleteRoport(){
+  //   return this.http.post()
+  //         .catch(this.handleError);
+  // }
 
   private handleError(error: HttpErrorResponse) {
     return Observable.throw(error.message);
   }
 
+  
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { TestType } from '../classes/TestType';
 import { TestData } from '../classes/test-details';
 import { TestProfile } from '../classes/selectedTestProfile';
@@ -44,9 +44,9 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.specimenIds = this._formBuilder.group({
-        urine:[''],
-        blood:['']
+        specimenId:[''],
     })
+    
 
     this.test.getTestProfile().subscribe((data:TestType[])=>{this.testSet = data;},
                                           error=>{console.error(error);});//should handle error as well

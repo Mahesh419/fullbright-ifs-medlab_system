@@ -27,9 +27,6 @@ public class TestProfileController {
 	@Autowired
 	TestProfileRepository testProfileRepository;
 	
-	@Autowired
-	TestController testController;
-	
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)

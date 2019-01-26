@@ -29,7 +29,10 @@ public class ReceiptController {
 		if(receiptId == null){
 			receiptId = "11110";
 		}
-		String response = "{\"receiptId\": \"" + (Long.parseLong(receiptId) + 1) + "\"}";
+		
+		long receipt = Long.parseLong(receiptId) + 1;
+		
+		String response = "{\"receiptId\": \"" + receipt + "\"}";
 		return Response.status(Response.Status.OK).entity(response).build();
 	}	
 }

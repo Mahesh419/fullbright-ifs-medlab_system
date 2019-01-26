@@ -1,6 +1,6 @@
 package com.fullbright.medlab.entities;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Receipt {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "receipt_id")
 	private long receiptId;	
 	
@@ -25,15 +24,15 @@ public class Receipt {
 	private boolean isCollected;
 	
 	@Column(name = "customer_id")
-	private int customerId;
+	private long customerId;
 	
 	@Column(name = "location")
-	private int location;
+	private long location;
 	
 	@Column(name = "issued_date")
 	private Date issuedDate;
 
-	public Receipt(long receiptId, double totalPrice, boolean isCollected, int customerId, int location,
+	public Receipt(long receiptId, double totalPrice, boolean isCollected, long customerId, long location,
 			Date issuedDate) {
 		super();
 		this.receiptId = receiptId;
@@ -72,19 +71,19 @@ public class Receipt {
 		this.isCollected = isCollected;
 	}
 
-	public int getCustomerId() {
+	public long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 
-	public int getLocation() {
+	public long getLocation() {
 		return location;
 	}
 
-	public void setLocation(int location) {
+	public void setLocation(long location) {
 		this.location = location;
 	}
 

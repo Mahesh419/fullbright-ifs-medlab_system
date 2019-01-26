@@ -2,8 +2,14 @@
         <div fxLayout="row" fxLayoutWrap="wrap" >
                 <!-- Card column -->
                 <div fxFlex.gt-sm="100%" fxFlex="100">
+                   
                     <mat-card>
-                            
+                            <div *ngIf = 'finalSubmitError' class="alert alert-danger " role="alert">
+                                    <strong>Submit ERROR:</strong> Form is not submitted.
+                                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                     </button> -->
+                            </div>
                         <mat-card-content>
                             <mat-card-title>Add Customer Report</mat-card-title>
                             

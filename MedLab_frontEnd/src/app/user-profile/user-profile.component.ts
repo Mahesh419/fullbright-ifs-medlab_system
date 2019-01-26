@@ -10,6 +10,7 @@ import { Customer } from '../classes/customer';
 import { TestService } from '../service/test.service';
 import { RequestData } from '../classes/RequestData';
 import { Receipt } from '../classes/receipt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,8 +29,9 @@ export class UserProfileComponent implements OnInit {
   private locations:Location[];
   private receipt:Receipt;
   private requestData:RequestData;
+  private finalSubmitError;
 
-  constructor(private _formBuilder: FormBuilder, private customer:CustomerService, private test:TestService) { }
+  constructor(private _formBuilder: FormBuilder, private customer:CustomerService, private test:TestService ,private router:Router) { }
 
   ngOnInit() {
     this.customerDetailForm = this._formBuilder.group({
@@ -65,9 +67,15 @@ export class UserProfileComponent implements OnInit {
       this.requestData = new RequestData();
       this.requestData.selectedTestprof = this.testProfiles;
       this.requestData.customerDetails = this.customerDetailForm.value;
-      this.requestData.SpecimenId = this.specimenIds.value;
+      this.requestData.SpecimenId = this.specimenIds.value.specimenId;
       this.requestData.recieptId = this.receipt.receiptId;
       this.requestData.totalTest = this.SubTotal;
+
+      this.test.saveCompleteRoport(this.requestData)
+                .subscribe((data)=>{  this.finalSubmitError = null;
+                                      this.router.navigate(['dashboard']);
+                                    },
+                            (error)=>{this.finalSubmitError = error;})
       
       console.log(JSON.stringify(this.requestData));
   }

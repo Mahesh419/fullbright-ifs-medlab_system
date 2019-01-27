@@ -24,7 +24,7 @@ const routes: Routes =[
     component: AdminLayoutComponent,
     canActivate:[AuthGardService],
     data: { 
-      expectedRole: 'admin'
+      expectedRole: 'RECEPTION'
     } ,
     children: [
         {
@@ -37,7 +37,7 @@ const routes: Routes =[
     component: LabTesterComponent,
     canActivate:[AuthGardService],
     data: { 
-      expectedRole: 'mlt'
+      expectedRole: 'MLT'
     } 
   }
     // { path: 'dashboard',      component: DashboardComponent },

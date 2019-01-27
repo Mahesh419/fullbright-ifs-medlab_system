@@ -27,6 +27,9 @@ import { AuthService } from './service/auth-servise.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerService } from './service/customer.service';
 import { TestService } from './service/test.service';
+import { LabTesterComponent } from './lab-tester/lab-tester.component';
+import { MatProgressBarModule } from '@angular/material';
+import { SpinnerComponent } from './app-spiner';
 
 @NgModule({
   imports: [
@@ -39,6 +42,7 @@ import { TestService } from './service/test.service';
     AppRoutingModule,
     MaterialModuleModule,
     ReactiveFormsModule,
+    MatProgressBarModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
     })
@@ -47,6 +51,8 @@ import { TestService } from './service/test.service';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    LabTesterComponent,
+    SpinnerComponent
 
   ],
   providers: [AuthGardService,AuthService,CustomerService,TestService],

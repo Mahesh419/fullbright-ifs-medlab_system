@@ -26,6 +26,8 @@ export class LabTesterComponent implements OnInit {
   private speciman:FormGroup;
   private testDataForm:FormGroup;
   private items: FormArray;
+  private completeStatus:Boolean  = false;
+  private errorState:boolean = false;
 
   constructor(private auth:AuthService, private router:Router, private report: ReportSubmitService,
                 private fb:FormBuilder) { }
@@ -55,20 +57,29 @@ export class LabTesterComponent implements OnInit {
     this.router.navigate(['login']);
 
   }
+  stateUpdate(state:boolean){//Notification on/ aff
+    this.completeStatus  = state;
+    this.errorState = state;
+  }
   searchFromSpecimen(){
     this.report.getReport(this.speciman.value.specimanId)
               .subscribe(
                 (data:TestReport)=>{//add form list items
                   this.testingReport = data;
+                  this.stateUpdate(false);
+
                   this.error = null;
-                  
+                  const arr = <FormArray>this.testDataForm.controls.testResultList;
+                  arr.controls = [];
                   this.testingReport.testList.forEach((test,index)=>{
-                    this.addFrom();
+                      this.addFrom();
                   })
+                 
                 },
                 (error)=>{
                   this.error = error;
                   this.testingReport=null;
+                  this.stateUpdate(false);
                 }
               );
     
@@ -82,9 +93,20 @@ export class LabTesterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(JSON.stringify(this.testDataForm.value));
+    this.errorState = true;
+    this.testingReport = null;
+    this.router.navigate(['mlt']);
+    // this.report.sendComplteData(this.testDataForm).subscribe(
+    //   data=>{
+    //     this.router
+    //   }
+    // )
+    console.log(this.testDataForm.value);
   }
   trackByTestId(index:number,test:any){
     return test.testId;
+  }
+  clearFormArray = (formArray: FormArray) => {
+    formArray = this.fb.array([]);
   }
 }

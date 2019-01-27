@@ -1,11 +1,9 @@
 package com.fullbright.medlab.controllers;
 
-import java.awt.List;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.swing.text.DefaultEditorKit.CutAction;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -26,8 +24,10 @@ import com.fullbright.medlab.entities.Test;
 import com.fullbright.medlab.entities.TestProfile;
 import com.fullbright.medlab.entities.TestReportDetail;
 import com.fullbright.medlab.entities.TestReportDetailId;
+
 import com.fullbright.medlab.models.FormRequestModel;
 import com.fullbright.medlab.models.ReportDataModel;
+
 import com.fullbright.medlab.repositories.CustomerRepository;
 import com.fullbright.medlab.repositories.CustomerVisitRepository;
 import com.fullbright.medlab.repositories.ReceiptRepository;

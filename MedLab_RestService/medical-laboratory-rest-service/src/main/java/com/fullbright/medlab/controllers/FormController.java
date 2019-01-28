@@ -27,13 +27,15 @@ import com.fullbright.medlab.entities.TestReportDetailId;
 
 import com.fullbright.medlab.models.FormRequestModel;
 import com.fullbright.medlab.models.ReportDataModel;
-
+import com.fullbright.medlab.models.ReportFillDataModel;
+import com.fullbright.medlab.models.TestDataModel;
 import com.fullbright.medlab.repositories.CustomerRepository;
 import com.fullbright.medlab.repositories.CustomerVisitRepository;
 import com.fullbright.medlab.repositories.ReceiptRepository;
 import com.fullbright.medlab.repositories.ReportRepository;
 import com.fullbright.medlab.repositories.TestProfileRepository;
 import com.fullbright.medlab.repositories.TestReportDetailRepository;
+import com.fullbright.medlab.repositories.TestRepository;
 
 @Component
 @Path("/form")
@@ -56,6 +58,7 @@ public class FormController {
 	
 	@Autowired
 	TestProfileRepository testProfileRepository;
+	
 	
 	@POST
 	@Path("/new")
@@ -121,6 +124,22 @@ public class FormController {
 		ReportDataModel reportData = new ReportDataModel(reportId, testProfile, testList);
 		
 		return Response.status(Response.Status.OK).entity(reportData).build();
-	}	
+	}
+	
+	@POST
+	@Path("/report/data")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addReportData(ReportFillDataModel reportData) {
+		
+		for(TestDataModel test : reportData.getTestResultList()) {	
+			testReportDetailRepository.addReportDetails(test.getTestValue(), new Date(), reportData.getReportId(), test.getTestId());
+		}
+		
+		reportRepository.updateReportStatus(reportData.getReportId());
+		
+		return Response.status(Response.Status.OK).build();
+	}
+	
 
 }

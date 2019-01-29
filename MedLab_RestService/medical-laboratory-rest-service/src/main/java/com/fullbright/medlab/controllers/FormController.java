@@ -3,7 +3,9 @@ package com.fullbright.medlab.controllers;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Optional;
 
+import javax.swing.text.DefaultEditorKit.CutAction;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +18,7 @@ import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.fullbright.medlab.entities.CollectionCenter;
 import com.fullbright.medlab.entities.Customer;
 import com.fullbright.medlab.entities.CustomerVisit;
 import com.fullbright.medlab.entities.Receipt;
@@ -28,7 +31,10 @@ import com.fullbright.medlab.entities.TestReportDetailId;
 import com.fullbright.medlab.models.FormRequestModel;
 import com.fullbright.medlab.models.ReportDataModel;
 import com.fullbright.medlab.models.ReportFillDataModel;
+import com.fullbright.medlab.models.ReportViewDataModel;
 import com.fullbright.medlab.models.TestDataModel;
+import com.fullbright.medlab.models.TestDetailModel;
+import com.fullbright.medlab.repositories.CollectionCenterRepository;
 import com.fullbright.medlab.repositories.CustomerRepository;
 import com.fullbright.medlab.repositories.CustomerVisitRepository;
 import com.fullbright.medlab.repositories.ReceiptRepository;
@@ -58,6 +64,12 @@ public class FormController {
 	
 	@Autowired
 	TestProfileRepository testProfileRepository;
+	
+	@Autowired
+	CollectionCenterRepository collectionCenterRepository;
+	
+	@Autowired
+	TestRepository testRepository;
 	
 	
 	@POST
@@ -141,7 +153,36 @@ public class FormController {
 		return Response.status(Response.Status.OK).entity("{\"status\": \"Done\"}").build();
 	}
 	
-	
+	@GET
+	@Path("/report/view/{receiptId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getReportDetailsByReceiptId(@PathParam("receiptId") String receiptId) {
+		
+		Report report = reportRepository.getReportDetailsByReceiptId(receiptId);
+		
+		TestReportDetail[] testListRes = testReportDetailRepository.getTestReportDetails(report.getReportId());
+		
+		TestDetailModel[] testList = new TestDetailModel[testListRes.length];
+		int count = 0;
+		for(TestReportDetail test : testListRes) {
+			Optional<Test> testDet = testRepository.findById(test.getTestReportDetailId().getTestId());
+			testList[count++] = new TestDetailModel(test.getTestReportDetailId().getTestId(), testDet.get().getName(), test.isTestStatus(), test.getValue(), testDet.get().getRange(), testDet.get().getRange());
+		}
+		
+		TestProfile testProfile = testProfileRepository.getTestProfileDetailsByReportId(report.getReportId());
+		
+		CustomerVisit customerVisit = customerVisitRespository.getCustomerVisitByReportId(report.getCustomerVisitId());
+		
+		Optional<Customer> customerRes = customerRepository.findById(customerVisit.getCustomerId());
+		Customer customer = customerRes.get();
+		
+		Optional<CollectionCenter> location = collectionCenterRepository.findById(customerVisit.getCollectionCenter());
+		
+		ReportViewDataModel reportView = new ReportViewDataModel(report.getReportId(), testProfile.getProfileName(), 
+				customer.getName(), customer.getGender(), location.get().getLocation(), report.isCompleted(), testList);
+		
+		return Response.status(Response.Status.OK).entity(reportView).build();
+	}
 	
 	
 }

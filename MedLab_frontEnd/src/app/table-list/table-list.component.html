@@ -8,13 +8,13 @@
                         <p class="card-category"> Search Test Report by Reciept ID</p>
                         <hr>
                     </div>
-                <form>
+                <form [formGroup]='formId'>
                     <div class="row mx-1">
                         <div class="col-md-6 my-auto"><h4 class="text-right"> Reciept No:</h4></div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline" >
                                 <mat-label>Enter Reciept NO</mat-label>
-                                <input matInput type="text" placeholder="Enter Reciept NO">
+                                <input matInput type="text" (keyup.enter)='searchReciept()' placeholder="Enter Reciept NO" formControlName='recieptID'>
                                 <mat-icon matSuffix>search</mat-icon>
                             </mat-form-field>
                         </div>
@@ -25,7 +25,7 @@
           </div>
           
           <div class="col-md-12 mt-1">
-              <div class="card mt-1">
+              <div class="card mt-1" *ngIf="recordDataRecieved">
                   <div class="card-header">
                       <h3 class="card-title mt-0 text-center">Medical Report</h3>
                       
@@ -39,10 +39,10 @@
                                   </div>
                                   <div class="card-body pl-1">
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item"><strong class="mr-1">Report Frofile:</strong> {{reportData.testProfileName}} </li>
-                                            <li class="list-group-item"><strong class="mr-1">Name:</strong>Mr. {{reportData.name}} </li>
-                                            <li class="list-group-item"><strong class="mr-1">Gender:</strong> {{reportData.gender}} </li>
-                                            <li class="list-group-item"><strong class="mr-1">Location:</strong> {{reportData.location}} </li>
+                                            <li class="list-group-item"><strong class="mr-1">Report Profile:</strong> {{recordDataRecieved.profileName}} </li>
+                                            <li class="list-group-item"><strong class="mr-1">Name:</strong>{{getGender()}} {{recordDataRecieved.customerName}} </li>
+                                            <li class="list-group-item"><strong class="mr-1">Gender:</strong> {{recordDataRecieved.gender}} </li>
+                                            <li class="list-group-item"><strong class="mr-1">Location:</strong> {{recordDataRecieved.location}} </li>
                                         </ul>
                                   </div>
                               </div>
@@ -50,7 +50,7 @@
                           <div class="col-md-6">
                             <div class="card card-plain">
                                 <div class="card-header">
-                                    <h5 class="card-title text-right"><strong>Date:</strong> {{reportData.issuedData}} </h5>
+                                    <h5 class="card-title text-right"><strong>Date:</strong> {{date | date: 'dd/MM/yyyy'}} </h5>
                                 </div>
                             </div>
                       </div>
@@ -72,18 +72,21 @@
                                  
                               </thead>
                               <tbody>
-                                  <tr *ngFor = 'let test of reportData.testResult'>
-                                      <td>
+                                  <tr *ngFor = 'let test of recordDataRecieved.testList'>
+                                      <td >
                                           {{test.testName}}
                                       </td>
-                                      <td>
-                                            {{test.result}}
+                                      <td *ngIf='test.testStatus'>
+                                            {{test.testResult}}
                                       </td>
-                                      <td>
-                                            {{test.referenceRange}}
+                                      <td *ngIf='test.testStatus'>
+                                            {{test.range}}
                                       </td>
-                                      <td>
+                                      <td *ngIf='test.testStatus'>
                                             {{test.unit}}
+                                      </td>
+                                      <td *ngIf='!test.testStatus' style="color:red">
+                                        Test Not Completed Yet.
                                       </td>
                                       
                                   </tr>

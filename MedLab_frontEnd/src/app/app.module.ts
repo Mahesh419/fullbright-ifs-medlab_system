@@ -28,6 +28,7 @@ import { LabTesterComponent } from './lab-tester/lab-tester.component';
 import { MatProgressBarModule, MatDividerModule } from '@angular/material';
 import { SpinnerComponent } from './app-spiner';
 import { ReportSubmitService } from './service/report-submit.service';
+import { ReportReadService } from './service/report-read.service';
 
 @NgModule({
   imports: [
@@ -54,7 +55,7 @@ import { ReportSubmitService } from './service/report-submit.service';
     SpinnerComponent
 
   ],
-  providers: [AuthGardService,AuthService,CustomerService,TestService,ReportSubmitService],
+  providers: [AuthGardService,AuthService,CustomerService,TestService,ReportSubmitService,ReportReadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

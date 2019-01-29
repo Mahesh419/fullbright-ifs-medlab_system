@@ -1,8 +1,7 @@
 export interface TestData {
     testName:string;
-    result:number;
-    unit:string;
-    referenceRange:string;
-    isCompleted:boolean;
-    
+    testStatus:boolean;
+    testResult:number;
+    range:string;
+    unit:string;   
 }

@@ -3,31 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c63b37a5-cee5-4b33-ab8f-ed70f9ab9675" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fullbright/medlab/controllers/FormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fullbright/medlab/controllers/FormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/classes/test-details.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/classes/test-details.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/components/sidebar/sidebar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/components/sidebar/sidebar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/lab-tester/lab-tester.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/lab-tester/lab-tester.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/layouts/admin-layout/admin-layout.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/layouts/admin-layout/admin-layout.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/layouts/admin-layout/admin-layout.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/layouts/admin-layout/admin-layout.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/maps/maps.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/maps/maps.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/maps/maps.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/maps/maps.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/service/report-submit.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/service/report-submit.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/table-list/table-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/table-list/table-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/table-list/table-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/table-list/table-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/typography/typography.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/typography/typography.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/typography/typography.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/typography/typography.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/upgrade/upgrade.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/upgrade/upgrade.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/upgrade/upgrade.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/upgrade/upgrade.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/user-profile/user-profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/user-profile/user-profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/user-profile/user-profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/app/user-profile/user-profile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../MedLab_frontEnd/src/post.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../MedLab_frontEnd/src/post.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -104,10 +79,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fullbright/medlab/controllers/FormController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="140" column="81" selection-start-line="140" selection-start-column="81" selection-end-line="140" selection-end-column="81" />
+            <state relative-caret-position="109">
+              <caret line="180" selection-start-line="180" selection-end-line="180" />
               <folding>
-                <element signature="e#4277#4283#0" expanded="true" />
+                <element signature="e#4708#4714#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -307,7 +282,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548749688808" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1548750568354" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -374,12 +349,12 @@
       <workItem from="1548648875573" duration="3021000" />
       <workItem from="1548693282067" duration="587000" />
       <workItem from="1548695967349" duration="730000" />
-      <workItem from="1548729421583" duration="5096000" />
+      <workItem from="1548729421583" duration="5896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32960000" />
+    <option name="totallyTimeSpent" value="33760000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -570,10 +545,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fullbright/medlab/controllers/FormController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="140" column="81" selection-start-line="140" selection-start-column="81" selection-end-line="140" selection-end-column="81" />
+        <state relative-caret-position="109">
+          <caret line="180" selection-start-line="180" selection-end-line="180" />
           <folding>
-            <element signature="e#4277#4283#0" expanded="true" />
+            <element signature="e#4708#4714#0" expanded="true" />
           </folding>
         </state>
       </provider>

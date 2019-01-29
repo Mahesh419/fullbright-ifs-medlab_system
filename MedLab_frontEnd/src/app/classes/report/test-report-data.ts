@@ -1,10 +1,10 @@
 import { TestData } from "./test-data";
 
 export interface TestReportData {
-        testProfileName:string;
-        name:string;
+        reportId:number;
+        profileName:string;
+        customerName:string;
         gender:string;
-        issuedData:string;
         location:String;
-        testResult:TestData[];        
+        testList:TestData[];        
 }

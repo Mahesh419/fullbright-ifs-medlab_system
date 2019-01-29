@@ -166,7 +166,7 @@ public class FormController {
 		int count = 0;
 		for(TestReportDetail test : testListRes) {
 			Optional<Test> testDet = testRepository.findById(test.getTestReportDetailId().getTestId());
-			testList[count++] = new TestDetailModel(test.getTestReportDetailId().getTestId(), testDet.get().getName(), test.isTestStatus(), test.getValue(), testDet.get().getRange(), testDet.get().getRange());
+			testList[count++] = new TestDetailModel(test.getTestReportDetailId().getTestId(), testDet.get().getName(), test.isTestStatus(), test.getValue(), testDet.get().getRange(), testDet.get().getUnit());
 		}
 		
 		TestProfile testProfile = testProfileRepository.getTestProfileDetailsByReportId(report.getReportId());

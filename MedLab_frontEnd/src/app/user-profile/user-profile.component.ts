@@ -35,7 +35,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.customerDetailForm = this._formBuilder.group({
-      customerId:[''],
       tpNo: ['', Validators.required],
       name: ['',Validators.required],
       email:['',[Validators.required,Validators.email]],
@@ -65,10 +64,10 @@ export class UserProfileComponent implements OnInit {
   //+=====================================================
   sendBigData(){
       this.requestData = new RequestData();
-      this.requestData.selectedTestprof = this.testProfiles;
+      this.requestData.selectedTestProf = this.testProfiles;
       this.requestData.customerDetails = this.customerDetailForm.value;
-      this.requestData.SpecimenId = this.specimenIds.value.specimenId;
-      this.requestData.recieptId = this.receipt.receiptId;
+      this.requestData.specimenId = this.specimenIds.value.specimenId;
+      this.requestData.receiptId = this.receipt.receiptId;
       this.requestData.totalTest = this.SubTotal;
 
       this.test.saveCompleteRoport(this.requestData)

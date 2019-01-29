@@ -1,9 +1,9 @@
 import { TestProfile } from "./selectedTestProfile";
 
 export class RequestData{
-    public selectedTestprof:TestProfile[];
+    public selectedTestProf:TestProfile[];
     public customerDetails;
-    public SpecimenId;
+    public specimenId;
     public totalTest:number;
-    public recieptId:number;
+    public receiptId:number;
 }

@@ -82,11 +82,11 @@ public class FormController {
 		CustomerVisit customerVisit = new CustomerVisit(new Date(), customer.getCustomerId(), 
 				request.getCustomerDetails().getLocation());
 		customerVisitRespository.save(customerVisit);
-		
+		System.out.println(request.getReceiptId());
 		Receipt receipt = new Receipt(request.getReceiptId(), request.getTotalTest(), false, customer.getCustomerId(),
 				request.getCustomerDetails().getLocation(), new Date());
 		receiptRepository.save(receipt);
-		
+
 		Report report = new Report(receipt.getReceiptId(), false, null, customerVisit.getCustomerVisitId(), 
 				request.getSpecimenId());
 		reportRepository.save(report);

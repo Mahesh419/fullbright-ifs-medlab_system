@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../service/auth-servise.service';
+import { Router } from '@angular/router';
+import { ReportSubmitService } from '../service/report-submit.service';
+import { TestReport } from '../classes/TestReport';
+import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-lab-tester',
@@ -6,10 +11,102 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lab-tester.component.scss']
 })
 export class LabTesterComponent implements OnInit {
+  private testData = [
+    {Test_name : "White Blood Test(WBC) count", unit:"billion cells/L"},
+    {Test_name : "Red Blood Cell (RBC) count",  unit : "trillion cells/L"},
+    {Test_name : "Platelets count",  unit:"billion/L"},
+    {Test_name : "Hemoblibin" ,  unit:"grams/dL"},
+    {Test_name : "Hemotocrite",  unit: "%percent"},
+  ];
 
-  constructor() { }
+  private userName:string;
+  private toggle:boolean;//dummy variable for testing purposes
+  private testingReport:TestReport;
+  private error:string;
+  private speciman:FormGroup;
+  private testDataForm:FormGroup;
+  private items: FormArray;
+  private completeStatus:Boolean  = false;
+  private errorState:boolean = false;
+
+  constructor(private auth:AuthService, private router:Router, private report: ReportSubmitService,
+                private fb:FormBuilder) { }
 
   ngOnInit() {
+    this.speciman = this.fb.group({
+      specimanId:[''],
+    });
+
+    this.testDataForm = this.fb.group({
+      reportId:[''],
+      profileId:[''],
+      testResultList:this.fb.array([]),
+    })
+
+    this.userName = this.auth.getUserName();
+  }
+  addFrom(){
+    this.items = this.testDataForm.get('testResultList') as FormArray;
+    this.items.push(this.getFormTest());
+  }
+  getTitle(){
+    return 'Laboratory Management System';
+  }
+  signOut(){
+    localStorage.removeItem('user');
+    this.router.navigate(['login']);
+
+  }
+  stateUpdate(state:boolean){//Notification on/ aff
+    this.completeStatus  = state;
+    this.errorState = state;
+  }
+  searchFromSpecimen(){
+    this.report.getReport(this.speciman.value.specimanId)
+              .subscribe(
+                (data:TestReport)=>{//add form list items
+                  this.testingReport = data;
+                  this.stateUpdate(false);
+
+                  this.error = null;
+                  const arr = <FormArray>this.testDataForm.controls.testResultList;
+                  arr.controls = [];
+                  this.testingReport.testList.forEach((test,index)=>{
+                      this.addFrom();
+                  })
+                 
+                },
+                (error)=>{
+                  this.error = error;
+                  this.testingReport=null;
+                  this.stateUpdate(false);
+                }
+              );
+    
   }
 
+  getFormTest():FormGroup{
+    return this.fb.group({
+      testId:[''],
+      testValue:[''],
+    })
+  }
+
+  onSubmit(){
+    this.errorState = true;
+    this.testingReport = null;
+    this.router.navigate(['mlt']);
+    // this.report.sendComplteData(this.testDataForm).subscribe(
+    //   data=>{
+    //     this.router
+    //   }
+    // )
+    console.log(this.testDataForm.value);
+  }
+  trackByTestId(index:number,test:any){
+    return test.testId;
+  }
+  clearFormArray = (formArray: FormArray) => {
+    formArray = this.fb.array([]);
+  }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { TestType } from '../classes/TestType';
-import { TestData } from '../classes/test-details';
 import { TestProfile } from '../classes/selectedTestProfile';
 import { Test } from '../classes/Test';
 import { SelectedTests } from '../classes/selectedTests';
@@ -25,7 +24,7 @@ export class UserProfileComponent implements OnInit {
   private customerDetailForm:FormGroup;
   private specimenIds:FormGroup;
   private existingCustomerData:Customer = new Customer();
-  private SubTotal:number = 1000.0;//total price of customr bill
+  private SubTotal:number = 0.0;//total price of customr bill
   private locations:Location[];
   private receipt:Receipt;
   private requestData:RequestData;
@@ -161,6 +160,9 @@ export class UserProfileComponent implements OnInit {
     });
     return selectedIndex;
   }
+  /*+============================================================
+  ** Seaach Test name by test id
+  **+============================================================*/
   private arrayTest(array:Array<SelectedTests>,elementId:number):number{
     let selectedIndex:number = -1 
     array.forEach((element,index)=>{
@@ -170,7 +172,9 @@ export class UserProfileComponent implements OnInit {
     })
     return selectedIndex;
   }
-
+/*+============================================================
+  ** Seaach Calculate total prices by  testProfileID
+  **+============================================================*/
   private testProfilePrice(testProfId:number):number{
     let total:number = 0 ;
     this.testSet.forEach((value,index)=>{
@@ -181,7 +185,7 @@ export class UserProfileComponent implements OnInit {
         });
       }
     });
-    
+    this.SubTotal = total;
     return total;
   }
 
@@ -194,10 +198,18 @@ export class UserProfileComponent implements OnInit {
           });
       }
     })
+      this.SubTotal = total;
+    
     
     return total;
   }
+  /*+============================================================
+  ** Test Whether customer test or not
+  **+============================================================*/
   private isCustomTest(nameProf):boolean{
      return (nameProf==this.customProfileName)?false:true;
+  }
+  private trackByName(index:number,testProf:any){
+    return testProf.profileName;
   }
 }

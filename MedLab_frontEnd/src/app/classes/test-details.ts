@@ -1,70 +1,24 @@
-export const TestData = [
-    {
-        testProfileId: 1,
-        testProfileName: "Custom",
-        testSet: [
-            {
-                testId: 1,
-                name: "Test A",
-                hours: 2,
-                unit: "asd",
-                range: "qwewqr",
-                specimenType: "BLOOD",
-                price: 200
-            },
-            {
-                testId: 2,
-                name: "Test A",
-                hours: 2,
-                unit: "asd",
-                range: "qwewqr",
-                specimenType: "BLOOD",
-                price: 200
-            }
-        ]
-    },
-    {
-        testProfileId: 2,
-        testProfileName: "Full Blood Count",
-        testSet: [{
-            testId: 1,
-            name: "Test A",
-            hours: 2,
-            unit: "asd",
-            range: "qwewqr",
-            specimenType: "BLOOD",
-            price: 200
+export const TestReportDummyData = {
+    testProfileName:"Full Blood Count",
+    name:"Indika Weerakoon",
+    gender:"Male",
+    issuedData:"2019-01-28",
+    location:"In_house",
+    testResult:[
+        {
+            testName:"Hemoblobin",
+            result:123,
+            unit:"cells/dL",
+            referenceRange:'100-150',
+            isCompleted:true
         },
         {
-            testId: 1,
-            name: "Test A",
-            hours: 2,
-            unit: "asd",
-            range: "qwewqr",
-            specimenType: "BLOOD",
-            price: 200
-        }]
-    },
-    {
-        testProfileId: 3,
-        testProfileName: "Dengui antigen",
-        testSet: [{
-            testId: 1,
-            name: "Test AX",
-            hours: 2,
-            unit: "asd",
-            range: "qwewqr",
-            specimenType: "BLOOD",
-            price: 200
-        },
-        {
-            testId: 1,
-            name: "Test AY",
-            hours: 2,
-            unit: "asd",
-            range: "qwewqr",
-            specimenType: "BLOOD",
-            price: 200
-        }]
-    }
-];
+            testName:"White Blood Cells(WBC)",
+            result:"233",
+            unit:"cells/dL",
+            referenceRange:'200-250',
+            isCompleted:false
+        }
+    ]
+}
+    

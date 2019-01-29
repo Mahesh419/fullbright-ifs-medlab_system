@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ReportSubmitService } from '../service/report-submit.service';
 import { TestReport } from '../classes/TestReport';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms';
+import { Report } from '../classes/submit-report/report';
 
 @Component({
   selector: 'app-lab-tester',
@@ -93,14 +94,17 @@ export class LabTesterComponent implements OnInit {
   }
 
   onSubmit(){
-    this.errorState = true;
-    this.testingReport = null;
-    this.router.navigate(['mlt']);
-    // this.report.sendComplteData(this.testDataForm).subscribe(
-    //   data=>{
-    //     this.router
-    //   }
-    // )
+    this.report.sendComplteData(this.testDataForm.value).subscribe(
+      data=>{
+        this.testingReport = null;
+        this.completeStatus = true;
+        console.log(data)
+      },
+      error=>{
+        this.errorState = true;
+        console.log(error);
+      }
+    )
     console.log(this.testDataForm.value);
   }
   trackByTestId(index:number,test:any){

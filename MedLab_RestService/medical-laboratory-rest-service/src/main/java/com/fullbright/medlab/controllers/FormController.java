@@ -138,7 +138,7 @@ public class FormController {
 		
 		reportRepository.updateReportStatus(reportData.getReportId());
 		
-		return Response.status(Response.Status.OK).build();
+		return Response.status(Response.Status.OK).entity("{\"status\": \"Done\"}").build();
 	}
 	
 	

@@ -176,7 +176,7 @@
                                                 </th>
                                             </thead>
                                             <tbody>
-                                                <tr  *ngFor='let testProf of testProfiles' >
+                                                <tr  *ngFor='let testProf of testProfiles; trackBy:trackByName' >
                                                     
                                                     <td *ngIf='isCustomTest(testProf.profileName)'>
                                                             {{ testProf.profileId}}

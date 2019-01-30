@@ -99,7 +99,7 @@
                                                         <div class="card-body">
                                                                 <ng-template matStepLabel>Patient Details</ng-template>
                                                             <form [formGroup]= "customerDetailForm">
-                                                                <input type="hidden" formControlName = "customerId" [(ngModel)]='existingCustomerData.customerId'><!--This field is used to store existing customer id-->
+                                                                
                                                                 <div class="row">
                                                                     <div class="col-md-8 "></div>
                                                                     <div class="col-md-3 " style = "margin-left:0px;">
@@ -204,6 +204,7 @@
                                                 </th>
                                             </thead>
                                             <tbody>
+<<<<<<< HEAD
                                               <tr>
                                                     <td>
                                                         dfdsfsdf
@@ -313,6 +314,9 @@
                                                     </td>
                                               </tr>
                                                 <tr  *ngFor='let testProf of testProfiles' >
+=======
+                                                <tr  *ngFor='let testProf of testProfiles; trackBy:trackByName' >
+>>>>>>> 061b17e9cf01e72195c0ca8990aeff487d539d99
                                                     
                                                     <td *ngIf='isCustomTest(testProf.profileName)'>
                                                             {{ testProf.profileId}}

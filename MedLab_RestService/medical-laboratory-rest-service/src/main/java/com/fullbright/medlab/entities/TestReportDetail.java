@@ -98,6 +98,13 @@ public class TestReportDetail {
 		this.comment = comment;
 	}
 	
+	public TestReportDetail(TestReportDetailId testReportDetailId, double value) {
+		super();
+		this.testReportDetailId = testReportDetailId;
+		this.value = value;
+		this.testStatus = true;
+	}
+	
 	public TestReportDetail() {
 		super();
 	}

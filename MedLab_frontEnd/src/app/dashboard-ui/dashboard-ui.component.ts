@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-ui',
@@ -8,11 +9,13 @@ import * as Chartist from 'chartist';
 })
 export class DashboardUIComponent implements OnInit {
 
-  constructor(){}
+  constructor(private router:Router){}
 
   ngOnInit() {
       
   }
 
-
+  addReportUI(){
+    this.router.navigate(['add-report']);
+  }
 }

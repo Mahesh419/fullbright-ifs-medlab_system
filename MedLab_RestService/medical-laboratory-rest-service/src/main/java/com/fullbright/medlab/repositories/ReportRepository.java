@@ -22,4 +22,8 @@ public interface ReportRepository extends CrudRepository<Report, Long> {
 	@Transactional
 	@Query(value  = "UPDATE report SET is_completed =  true WHERE report_id = (:reportId)", nativeQuery = true)
 	public void updateReportStatus(@Param("reportId") long reportId);
+
+	@Query(value = "SELECT * FROM report WHERE receipt_Id = (:receiptId)", nativeQuery = true)
+	Report getReportDetailsByReceiptId(@Param("receiptId") String receiptId);
+	
 }

@@ -9,6 +9,6 @@ import com.fullbright.medlab.entities.Receipt;
 @Repository
 public interface ReceiptRepository extends CrudRepository<Receipt, Long> {
 
-	@Query(value = "SELECT receipt_id FROM receipt ORDER BY receipt_id ASC limit 1", nativeQuery = true)
+	@Query(value = "SELECT receipt_id FROM receipt ORDER BY receipt_id DESC limit 1", nativeQuery = true)
 	String getLastReceiptId();
 }

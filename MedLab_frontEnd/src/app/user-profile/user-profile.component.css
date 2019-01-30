@@ -1,4 +1,9 @@
-
+.thBill{
+  color: #000;
+  font-weight: 900;
+  font-size: 14px;
+  text-align: center;
+}
 .stepper-form{
     margin: 10px;
     margin-top:7%; 
@@ -40,5 +45,10 @@
 
   .mat-checkbox-inner-container {
     
+  }
+
+
+    ::ng .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+    background-color : #ee514d;
   }
 

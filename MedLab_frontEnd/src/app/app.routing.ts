@@ -22,10 +22,10 @@ const routes: Routes =[
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate:[AuthGardService],
-    data: { 
-      expectedRole: 'RECEPTION'
-    } ,
+    // canActivate:[AuthGardService],
+    // data: { 
+    //   expectedRole: 'RECEPTION'
+    // } ,
     children: [
         {
       path: '',
@@ -35,10 +35,10 @@ const routes: Routes =[
   {
     path: 'mlt',
     component: LabTesterComponent,
-    canActivate:[AuthGardService],
-    data: { 
-      expectedRole: 'MLT'
-    } 
+    // canActivate:[AuthGardService],
+    // data: { 
+    //   expectedRole: 'MLT'
+    // } 
   }
     // { path: 'dashboard',      component: DashboardComponent },
     // { path: 'user-profile',   component: UserProfileComponent },

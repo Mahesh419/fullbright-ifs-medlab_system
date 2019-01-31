@@ -204,139 +204,28 @@
                                                 </th>
                                             </thead>
                                             <tbody>
-<<<<<<< HEAD
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                              <tr>
-                                                    <td>
-                                                        dfdsfsdf
-                                                    </td>
-                                                    <td >
-                                                        fsdfsdf  
-                                                    </td>
-                                                        
-                                                    <td >
-                                                        sfsdfsd
-                                                    </td>
-                                              </tr>
-                                                <tr  *ngFor='let testProf of testProfiles' >
-=======
+                                              
                                                 <tr  *ngFor='let testProf of testProfiles; trackBy:trackByName' >
->>>>>>> 061b17e9cf01e72195c0ca8990aeff487d539d99
                                                     
-                                                    <td *ngIf='isCustomTest(testProf.profileName)'>
+                                                    <td *ngIf='isCustomTest(testProf.profileName)' class="text-center">
                                                             {{ testProf.profileId}}
                                                     </td>
                                                     <td *ngIf='isCustomTest(testProf.profileName)'>
                                                             {{testProf.profileName}}
                                                     </td>
                                                         
-                                                    <td class="text-primary" *ngIf='isCustomTest(testProf.profileName)'>
+                                                    <td class="text-primary" *ngIf='isCustomTest(testProf.profileName)' class="text-center">
                                                         {{testProfilePrice(testProf.profileId)|number:'.2-2'}}
                                                     </td>
                                                     
-                                                    <td *ngIf='!isCustomTest(testProf.profileName)'>
+                                                    <td *ngIf='!isCustomTest(testProf.profileName)' class="text-center">
                                                             {{ testProf.profileId}}
                                                     </td>
-                                                    <td *ngIf='!isCustomTest(testProf.profileName)'>
+                                                    <td *ngIf='!isCustomTest(testProf.profileName)'  class="text-center">
                                                             {{testProf.profileName}}
                                                     </td>
                                                         
-                                                    <td class="text-primary" *ngIf='!isCustomTest(testProf.profileName)'>
+                                                    <td class="text-primary" *ngIf='!isCustomTest(testProf.profileName)' class="text-center">
                                                         {{customTestPrice()|number:'.2-2'}}
                                                     </td>  
                                                 </tr>

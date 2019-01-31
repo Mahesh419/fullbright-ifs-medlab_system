@@ -28,14 +28,16 @@
               <div class="card mt-1" *ngIf="recordDataRecieved">
                   <div class="card-header">
                       <h3 class="card-title mt-0 text-center">Medical Report</h3>
-                      
+                      <hr class="mb-0">
                   </div>
-                  <div class="card-body">
+                  
+                  <div class="card-body mt-0">
                       <div class="row mx-3">
-                          <div class="col-md-6">
-                              <div class="card card-plain">
+                          <div class="col-md-6 mt-0">
+                              <div class="card card-plain mt-0">
                                   <div class="card-header">
                                         <h4 class="card-title"><strong>Repord Details</strong></h4>
+                                       
                                   </div>
                                   <div class="card-body pl-1">
                                         <ul class="list-group list-group-flush">
@@ -47,9 +49,9 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="col-md-6">
-                            <div class="card card-plain">
-                                <div class="card-header">
+                          <div class="col-md-6 mt-0">
+                            <div class="card card-plain mt-0">
+                                <div class="card-header ">
                                     <h5 class="card-title text-right"><strong>Date:</strong> {{date | date: 'dd/MM/yyyy'}} </h5>
                                 </div>
                             </div>

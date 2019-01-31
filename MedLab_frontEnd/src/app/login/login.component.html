@@ -1,4 +1,4 @@
-    <div class="main-content " id="addQuestion">
+    <div class="main-content " id="addQuestion" style="margin-top: 2%;">
   <div class="container-fluid">
       <div class="row text-center">
           <div class="col-md-4"></div>
@@ -9,14 +9,16 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-              <div class="card text">
+              <div class="card text" style="border-radius: 0px;">
                   <div class="card-header ">
-                      <h4 class="card-title text-danger">Laboratery Manegement System</h4>
+                      <img src="/assets/img/logo.png" width="35%" style="padding-top: 8%;">
+                      
                       
                   </div>
                   <div class="card-body" >
+                    <h4 class="" style="font-weight: 700;color: rgba(0,0,0,0.87);padding-bottom: 3%;font-size: 24px;font-family: Lato;">Sign in<br><span style="font-weight: 500;font-size: 16px">to your Laboratory Account</span></h4>
                      <!-- start form control -->
-                      <form style="padding: 20px;" [formGroup]='login' (ngSubmit)='onSubmit()'>
+                      <form style="padding: 0 8% 0 8%;" [formGroup]='login' (ngSubmit)='onSubmit()'>
                           <div class="row " >
                               
                               <div class="col-md-12">
@@ -40,10 +42,10 @@
                               
                           </div>
                           
-                          <button mat-stroked-button type="submit" class="btn btn-danger" [disabled]='!login.valid'>Login</button>
+                          <button  type="submit" class="btn btn-danger" [disabled]='!login.valid'>Login</button>
                           
                           <div class="clearfix"></div>
-                          <a class="text-primary text-center passwordForget">Forgot Password</a>
+                          <p style="font-size: 12px;padding-top: 10px;font-weight: 400"><a class="forgotPass" href="#" style="font-weight: 900;">Forgot your Password ?</a><br>Contact your Officer in-charge.</p>
                       </form>
                   </div>
               </div>

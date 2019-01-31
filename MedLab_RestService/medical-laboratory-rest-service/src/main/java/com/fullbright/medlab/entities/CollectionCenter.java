@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="collection_center")
-public class CollectionCenter {
+public class 	CollectionCenter {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

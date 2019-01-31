@@ -24,8 +24,9 @@ public class ReceiptController {
 	@Path("/new")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getNewReceiptId() {		
-		String receiptId = receiptRepository.getLastReceiptId();
-		
+		String receiptId;
+		receiptId = receiptRepository.getLastReceiptId();
+
 		if(receiptId == null){
 			receiptId = "11110";
 		}

@@ -25,7 +25,6 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
-  private userName:string = "Indika";
 
   constructor() { }
 

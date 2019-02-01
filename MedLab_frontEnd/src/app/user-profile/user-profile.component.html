@@ -18,25 +18,26 @@
                                 <!-- +===========================================================
                                     This is a first stepper .that is user to display Test items
                                      +=========================================================== -->
-                             <mat-step [stepControl]="firstFormGroup">
+                             <mat-step [stepControl]="">
                                 <div class="card">
 
                                      <div class="card-header card-header-danger">
-                                                            <h4 class="card-title">Patient Information Collection</h4>
-                                                            <p class="card-category">Use this form to collect the patient information.</p>
-                                                        </div>
+                                            <h4 class="card-title">Patient Information Collection</h4>
+                                            <p class="card-category">Use this form to collect the patient information.</p>
+                                    </div>
                                     <div class="card-body">
                                         <ng-template matStepLabel>Select Report</ng-template>
                                         
                                           
                                         
                                         <div class="container">
-                                          <mat-accordion   *ngFor = "let testset of testSet;let i = index">
-                                          <div class="row">
-                                            <div class="col-md-6 order-first" >
+                                        <div class="row">
+                                            <div class="col-md-6 order-first" style="margin: 0"  *ngFor = "let testset of testSet;let i = index">
+                                          <mat-accordion  >
+                                          
                                               <mat-expansion-panel style="border-radius: 0px;" *ngIf="testset.testProfileName != 'Custom'" >
                                                       <mat-expansion-panel-header style="background-color: #f9f9f9;">
-                                                        <mat-panel-title  >
+                                                        <mat-panel-title>
                                                           <mat-checkbox (change)="makeJSON($event,i,testset)" (click) = "$event.stopPropagation();" 
                                                                         class="check_box_Style"><span class ="txtdecoCheckbox" style="font-family: Lato;font-size: 14px;font-weight: 700;">{{testset.testProfileName}}</span></mat-checkbox>
                                                                         
@@ -53,8 +54,8 @@
                                                             
                                                       
                                                     </mat-expansion-panel>
-                                            </div>
-                                            <div class="col-md-6 order-last">
+                                            <!-- </div>
+                                            <div class="col-md-6 order-last"> -->
                                               <mat-expansion-panel *ngIf="testset.testProfileName == 'Custom'" style="border-radius: 0px;">
                                                         <mat-expansion-panel-header style="background-color: #f9f9f9;">
                                                             <mat-panel-title  style="font-family: Lato;font-size: 14px;font-weight: 700;">
@@ -69,9 +70,10 @@
                                                                      (change)='makeJSON($event,i,testset,test)'>{{test.name}}</mat-checkbox></mat-list-item>
                                                         </mat-list>
                                                 </mat-expansion-panel>
+                                            
+                                          </mat-accordion>
                                             </div>
-                                          </div>
-                                          </mat-accordion> 
+                                          </div> 
                                         </div>
                                     <br>
                                         <button mat-raised-button type="button" class="btn btn-danger pull-right" matStepperNext>Next</button>

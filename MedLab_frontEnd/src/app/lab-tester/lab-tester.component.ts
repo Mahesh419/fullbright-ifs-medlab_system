@@ -20,15 +20,15 @@ export class LabTesterComponent implements OnInit {
     {Test_name : "Hemotocrite",  unit: "%percent"},
   ];
 
-  private userName:string;
-  private toggle:boolean;//dummy variable for testing purposes
-  private testingReport:TestReport;
-  private error:string;
-  private speciman:FormGroup;
-  private testDataForm:FormGroup;
-  private items: FormArray;
-  private completeStatus:Boolean  = false;
-  private errorState:boolean = false;
+  public userName:string;
+  public toggle:boolean;//dummy variable for testing purposes
+  public testingReport:TestReport;
+  public error:string;
+  public speciman:FormGroup;
+  public testDataForm:FormGroup;
+  public items: FormArray;
+  public completeStatus:Boolean  = false;
+  public errorState:boolean = false;
 
   constructor(private auth:AuthService, private router:Router, private report: ReportSubmitService,
                 private fb:FormBuilder) { }

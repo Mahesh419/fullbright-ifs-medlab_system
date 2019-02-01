@@ -10,7 +10,9 @@
                     </div>
                 <form [formGroup]='formId'>
                     <div class="row mx-1">
-                        <div class="col-md-6 my-auto"><h4 class="text-right"> Reciept No:</h4></div>
+                        <div class="col-md-6 my-auto">
+                            
+                            <h4 class="text-right"> Reciept No:</h4></div>
                         <div class="col-md-6">
                             <mat-form-field appearance="outline" >
                                 <mat-label>Enter Reciept NO</mat-label>
@@ -24,14 +26,21 @@
           </div>
           </div>
           
-          <div class="col-md-12 mt-1">
-              <div class="card mt-1" *ngIf="recordDataRecieved">
+          <div class="col-md-12 mt-1" >
+               
+              <div class="card mt-1" *ngIf="recordDataRecieved" id='content' #content>
                   <div class="card-header">
-                      <h3 class="card-title mt-0 text-center">Medical Report</h3>
+                      <div class="row">
+                          <div class="col-md-4"></div>
+                          <h3 class="card-title mt-0 text-center col-md-4">Medical Report</h3>
+                          <div class='col-md-4'> <button mat-raised-button class = "btn btn-danger pull-right ml-5"  (click) = 'downloadPDF()' *ngIf='downloadStatus'><mat-icon>assignment_returned</mat-icon> Download</button></div>
+                     
+                      </div>
+                      
                       <hr class="mb-0">
                   </div>
                   
-                  <div class="card-body mt-0">
+                  <div class="card-body mt-0" id='content' #content>
                       <div class="row mx-3">
                           <div class="col-md-6 mt-0">
                               <div class="card card-plain mt-0">
@@ -39,7 +48,7 @@
                                         <h4 class="card-title"><strong>Repord Details</strong></h4>
                                        
                                   </div>
-                                  <div class="card-body pl-1">
+                                  <div class="card-body pl-1"  >
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item"><strong class="mr-1">Report Profile:</strong> {{recordDataRecieved.profileName}} </li>
                                             <li class="list-group-item"><strong class="mr-1">Name:</strong>{{getGender()}} {{recordDataRecieved.customerName}} </li>
@@ -57,7 +66,7 @@
                             </div>
                       </div>
                       <div class="table-responsive">
-                          <table class="table table-striped">
+                          <table class="table table-striped" id = 'tablepdf' #tablepdf>
                               <thead class="thead-dark">
                                   <th>
                                       Test Name

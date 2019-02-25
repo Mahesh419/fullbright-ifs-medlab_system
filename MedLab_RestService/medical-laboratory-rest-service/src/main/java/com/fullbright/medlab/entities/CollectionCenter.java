@@ -43,8 +43,6 @@ public class 	CollectionCenter {
 		this.location = location;
 	}
 	
-	public CollectionCenter() {
-		super();
-	}
-	
+	public CollectionCenter() { super(); }
+
 }
